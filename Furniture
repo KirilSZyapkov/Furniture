@@ -1,0 +1,15 @@
+function furniture(input) {
+    let patternt = />>(?<name>[A-Za-z]+)<<(?<price>[\d]+(\.[\d]+)?)!(?<quantity>[\d]+)/;
+    let line;
+    console.log("Bought furniture:");
+    let totalPrice = 0;
+    while ((line = input.shift()) !== "Purchase") {
+        let matches = patternt.exec(line);
+        if (matches) {
+            console.log(matches.groups["name"]);
+            totalPrice += Number(matches.groups["price"]) * Number(matches.groups["quantity"]);
+        }
+
+    }
+    console.log(`Total money spend: ${totalPrice.toFixed(2)}`);
+}
